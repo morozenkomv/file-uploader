@@ -1,0 +1,8 @@
+D:\Work\tests\FileUploader\FileUploader.Services\bin\Debug\netcoreapp3.0\FileUploader.Services.deps.json
+D:\Work\tests\FileUploader\FileUploader.Services\bin\Debug\netcoreapp3.0\FileUploader.Services.dll
+D:\Work\tests\FileUploader\FileUploader.Services\bin\Debug\netcoreapp3.0\FileUploader.Services.pdb
+D:\Work\tests\FileUploader\FileUploader.Services\obj\Debug\netcoreapp3.0\FileUploader.Services.AssemblyInfoInputs.cache
+D:\Work\tests\FileUploader\FileUploader.Services\obj\Debug\netcoreapp3.0\FileUploader.Services.AssemblyInfo.cs
+D:\Work\tests\FileUploader\FileUploader.Services\obj\Debug\netcoreapp3.0\FileUploader.Services.dll
+D:\Work\tests\FileUploader\FileUploader.Services\obj\Debug\netcoreapp3.0\FileUploader.Services.pdb
+D:\Work\tests\FileUploader\FileUploader.Services\obj\Debug\netcoreapp3.0\FileUploader.Services.csprojAssemblyReference.cache

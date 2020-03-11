@@ -1,0 +1,129 @@
+<mat-card class="mb-2 mat-elevation-z4" style="display: flex; justify-content: center; align-items: center">
+  <form [formGroup]="signup" (ngSubmit)="submit()" #fileForm="ngForm">
+
+    <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+    <button *ngIf="fileForm.valid" class="btn btn-success mt-2">Submit</button>
+
+  </form>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z4">
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element;let i = dataIndex;"> {{ i + 1 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element">
+      <div mat-card-avatar [ngStyle]="{'background-image': 'url(data:' + element.contentType + ';base64,' + element.content + ')'}" class="example-header-image"></div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="size">
+    <th mat-header-cell *matHeaderCellDef> Size </th>
+    <td mat-cell *matCellDef="let element"> {{element.size / 1000}} Kb </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" colspan="4">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram"
+             [ngStyle]="{'background-image': 'url(data:' + element.contentType + ';base64,' + element.content + ')'}">
+
+        </div>
+
+        <div class="example-element-description">
+          <p>Uploaded - {{element.uploaddate | date:'HH:mm'}}</p>
+          <p>Uploaded by - {{element.uploadby}}</p>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+<mat-card *ngIf="loading" style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-spinner diameter="30" color="primary"
+                        mode="indeterminate">
+  </mat-progress-spinner>
+</mat-card>
+
+<style>
+  table {
+    width: 100%;
+  }
+
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    border-radius: 50%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  tr.example-detail-row {
+    height: 0;
+  }
+
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+
+  .example-element-diagram {
+    min-width: 80px;
+    border: 1px solid grey;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    background-size: cover;
+    min-height: 150px;
+    min-width: 250px;
+  }
+
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+
+  .example-element-description {
+    padding: 16px;
+  }
+
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+</style>

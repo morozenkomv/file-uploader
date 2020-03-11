@@ -1,0 +1,5 @@
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile">
+  <label class="custom-file-label" for="customFile">{{file ? file.name : 'Choose file'}}</label>
+  <mat-progress-bar *ngIf="progress > 0" mode="determinate" [value]="progress"></mat-progress-bar>
+</div>
