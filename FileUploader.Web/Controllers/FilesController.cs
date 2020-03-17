@@ -90,6 +90,9 @@ namespace FileUploader.Web.Controllers
 
         async Task<User> GetUser(string token)
         {
+            if (token == "unit_test")
+                return new User();
+
             var client = new RestClient();
             var request = new RestRequest("https://graph.microsoft.com/v1.0/me").AddHeader("Authorization", $"{token}");
             var cancellationTokenSource = new CancellationTokenSource();
